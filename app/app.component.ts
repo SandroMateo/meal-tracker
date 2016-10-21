@@ -6,6 +6,7 @@ import { Food } from './food.model';
   template: `
   <h1>Meal Tracker</h1>
   <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
+  <button class="btn" (click)="getTotalCaloriesByDay()">See Total Calories by Day</button>
   <food-filter
     (clickSender) = "setCalorieFilter($event)"
   ></food-filter>
@@ -33,7 +34,9 @@ export class AppComponent {
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
 
-  all
+  allDates: string[] = ["10/21/2016"];
+  totalCaloriesPerDay: string[] = [];
+  averageCaloriesPerDay: string[] = [];
 
   showNewFoodForm: boolean = false;
   selectedFood: Food = null;
@@ -58,5 +61,19 @@ export class AppComponent {
 
   setCalorieFilter(_calorieFilter: string) {
     this.calorieFilter = _calorieFilter;
+  }
+
+  getTotalCaloriesByDay() {
+    var totalCalories: number = 0;
+    for(var i = 0; i < this.allDates.length; i++) {
+      for(var j = 0; j < this.allFoods.length; j++) {
+        if(this.allFoods[j].dateLogged == this.allDates[i]) {
+          totalCalories += this.allFoods[j].calories;
+        }
+      }
+      this.totalCaloriesPerDay.push(this.allDates[i] + ": " + totalCalories);
+      totalCalories = 0;
+    }
+    console.log(this.totalCaloriesPerDay);
   }
 }
