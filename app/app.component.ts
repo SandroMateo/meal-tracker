@@ -15,6 +15,8 @@ import { Food } from './food.model';
     (clickSender)="addNewFood($event)"
   ></new-food>
   <food-list
+    [childAllDates]="allDates"
+    [childTotalCaloriesByDay]="totalCaloriesByDay"
     [childAllFoods]="allFoods"
     [childCalorieFilter] = "calorieFilter"
     (clickSender)="editSelectedFood($event)"
@@ -34,7 +36,7 @@ export class AppComponent {
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
 
-  allDates: string[] = [];
+  allDates: string[] = ["10/21/2016"];
   totalCaloriesByDay: number [] = [];
   averageCaloriesPerDay: number = 0;
 
@@ -55,7 +57,7 @@ export class AppComponent {
     console.log(this.allDates);
   }
 
-  checkNewDate(_newDate: Food) {
+  checkNewDate(_newDate: string) {
     var addDate: boolean = false;
     for(var i = 0; i < this.allDates.length; i++) {
       if(_newDate == this.allDates[i]) {

@@ -13,4 +13,5 @@ import { Food } from './food.model';
 
 export class FoodDisplayComponent {
   @Input() food: Food;
+  @Input() date: string;
 }
