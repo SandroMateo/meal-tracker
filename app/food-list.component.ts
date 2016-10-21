@@ -5,6 +5,8 @@ import { Food } from './food.model';
   selector: 'food-list',
   template: `
     <div *ngFor="let currentDate of childAllDates" class="well">
+      <h3>Day: {{ currentDate }}</h3>
+      <hr>
       <div *ngFor="let currentFood of childAllFoods | dates:currentDate | calories:childCalorieFilter">
         <food-display
           [date]="currentDate"

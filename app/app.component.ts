@@ -4,27 +4,29 @@ import { Food } from './food.model';
 @Component({
   selector: 'my-app',
   template: `
-  <h1>Meal Tracker</h1>
-  <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
-  <button class="btn" (click)="getTotalCaloriesByDay(); calculateAverageCaloriesPerDay()">See Total Calories by Day</button>
-  <food-filter
-    (clickSender) = "setCalorieFilter($event)"
-  ></food-filter>
-  <new-food
-    [show]="showNewFoodForm"
-    (clickSender)="addNewFood($event)"
-  ></new-food>
-  <food-list
-    [childAllDates]="allDates"
-    [childTotalCaloriesByDay]="totalCaloriesByDay"
-    [childAllFoods]="allFoods"
-    [childCalorieFilter] = "calorieFilter"
-    (clickSender)="editSelectedFood($event)"
-  ></food-list>
-  <edit-food
-    [childSelectedFood]="selectedFood"
-    (clickSender)="finishEditing()"
-  ></edit-food>
+  <div class="container">
+    <h1>Meal Tracker</h1>
+    <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
+    <food-filter
+      (clickSender) = "setCalorieFilter($event)"
+    ></food-filter>
+    <new-food
+      [show]="showNewFoodForm"
+      (clickSender)="addNewFood($event)"
+    ></new-food>
+    <h2>Average Calories Per Day: {{ averageCaloriesPerDay }}</h2>
+    <food-list
+      [childAllDates]="allDates"
+      [childTotalCaloriesByDay]="totalCaloriesByDay"
+      [childAllFoods]="allFoods"
+      [childCalorieFilter] = "calorieFilter"
+      (clickSender)="editSelectedFood($event)"
+    ></food-list>
+    <edit-food
+      [childSelectedFood]="selectedFood"
+      (clickSender)="finishEditing()"
+    ></edit-food>
+  </div>
   `
 })
 
@@ -54,6 +56,8 @@ export class AppComponent {
     if(this.checkNewDate(_newFood.dateLogged)) {
       this.allDates.push(_newFood.dateLogged);
     }
+    this.getTotalCaloriesByDay();
+    this.calculateAverageCaloriesPerDay();
     console.log(this.allDates);
   }
 

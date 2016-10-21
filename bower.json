@@ -13,5 +13,8 @@
   ],
   "authors": [
     "Sandro Alvarez"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
 }
