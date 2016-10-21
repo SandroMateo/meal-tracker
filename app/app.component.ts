@@ -6,6 +6,8 @@ import { Food } from './food.model';
   template: `
   <h1>Meal Tracker</h1>
   <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
+  <food-filter
+  ></food-filter>
   <new-food
     [show]="showNewFoodForm"
     (clickSender)="addNewFood($event)"
