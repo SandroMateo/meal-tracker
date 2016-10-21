@@ -11,6 +11,8 @@ import { Food } from './food.model';
     (clickSender)="addNewFood($event)"
   ></new-food>
   <food-list
+    [childAllFoods]="allFoods"
+    (clickSender)="editSelectedFood($event)"
   ></food-list>
   `
 })
@@ -24,6 +26,7 @@ export class AppComponent {
   ];
 
   showNewFoodForm: boolean = false;
+  selectedFood: Food = null;
 
   accessNewFoodForm() {
     this.showNewFoodForm = true;
@@ -32,5 +35,9 @@ export class AppComponent {
   addNewFood(_newFood: Food) {
     this.allFoods.push(_newFood);
     this.showNewFoodForm = false;
+  }
+
+  editSelectedFood(_selectedFood: Food) {
+    this.selectedFood = _selectedFood;
   }
 }
