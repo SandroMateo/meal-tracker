@@ -6,39 +6,50 @@ import { Food } from './food.model';
   template: `
   <div class="container">
     <h1>Meal Tracker</h1>
-    <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
+    <button class="btn" id="new-meal-btn" (click)="accessNewFoodForm()">Eat Up!</button>
     <food-filter
       [childAverageCaloriesPerDay] = "averageCaloriesPerDay"
       (clickSender) = "setCalorieFilter($event)"
     ></food-filter>
-    <new-food
-      [show]="showNewFoodForm"
-      (clickSender)="addNewFood($event)"
-    ></new-food>
     <div *ngIf="averageCaloriesPerDay > 0">
       <h2>Average Calories Per Day: {{ averageCaloriesPerDay }}</h2>
     </div>
-    <food-list
-      [childAllDates]="allDates"
-      [childTotalCaloriesByDay]="totalCaloriesByDay"
-      [childAllFoods]="allFoods"
-      [childCalorieFilter] = "calorieFilter"
-      (clickSender)="editSelectedFood($event)"
-    ></food-list>
-    <edit-food
-      [childSelectedFood]="selectedFood"
-      (clickSender)="finishEditing()"
-    ></edit-food>
+    <div class="row">
+      <div class="col-md-8">
+        <food-list
+          [childAllDates]="allDates"
+          [childTotalCaloriesByDay]="totalCaloriesByDay"
+          [childAllFoods]="allFoods"
+          [childCalorieFilter] = "calorieFilter"
+          (clickSender)="editSelectedFood($event)"
+        ></food-list>
+      </div>
+      <div class="col-md-4">
+        <new-food
+          [show]="showNewFoodForm"
+          (clickSender)="addNewFood($event)"
+        ></new-food>
+        <edit-food
+          [childSelectedFood]="selectedFood"
+          (clickSender)="finishEditing()"
+        ></edit-food>
+      </div>
+    </div>
   </div>
   `
 })
 
 export class AppComponent {
-  allFoods: Food[] = [];
+  allFoods: Food[] = [
+    new Food("Salad", "The same big salad I eat every day for lunch", 350),
+    new Food("Trail Mix", "handful of almonds, walnuts, and raisins", 250),
+    new Food("Burrito", "chicken burrito with guacamole, sour cream, beans, rice, spinach, salsa, and cheese", 600),
+    new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
+  ];
 
-  allDates: string[] = [];
+  allDates: string[] = ["10/21/2016"];
   totalCaloriesByDay: number [] = [];
-  averageCaloriesPerDay: number = 0;
+  averageCaloriesPerDay: number = 1300;
 
   showNewFoodForm: boolean = false;
   selectedFood: Food = null;
@@ -51,6 +62,7 @@ export class AppComponent {
   addNewFood(_newFood: Food) {
     this.allFoods.push(_newFood);
     this.showNewFoodForm = false;
+    this.selectedFood = null;
     if(this.checkNewDate(_newFood.dateLogged)) {
       this.allDates.push(_newFood.dateLogged);
     }
@@ -72,6 +84,7 @@ export class AppComponent {
 
   editSelectedFood(_selectedFood: Food) {
     this.selectedFood = _selectedFood;
+    this.showNewFoodForm = false;
   }
 
   finishEditing() {
