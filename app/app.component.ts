@@ -7,6 +7,7 @@ import { Food } from './food.model';
   <h1>Meal Tracker</h1>
   <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
   <food-filter
+    (clickSender) = "setCalorieFilter($event)"
   ></food-filter>
   <new-food
     [show]="showNewFoodForm"
@@ -14,6 +15,7 @@ import { Food } from './food.model';
   ></new-food>
   <food-list
     [childAllFoods]="allFoods"
+    [childCalorieFilter] = "calorieFilter"
     (clickSender)="editSelectedFood($event)"
   ></food-list>
   <edit-food
@@ -33,6 +35,7 @@ export class AppComponent {
 
   showNewFoodForm: boolean = false;
   selectedFood: Food = null;
+  calorieFilter: string = "all";
 
   accessNewFoodForm() {
     this.showNewFoodForm = true;
@@ -49,5 +52,9 @@ export class AppComponent {
 
   finishEditing() {
     this.selectedFood = null;
+  }
+
+  setCalorieFilter(_calorieFilter: string) {
+    this.calorieFilter = _calorieFilter;
   }
 }

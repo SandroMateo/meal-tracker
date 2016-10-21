@@ -4,7 +4,7 @@ import { Food } from './food.model';
 @Component ({
   selector: 'food-list',
   template: `
-    <div *ngFor="let currentFood of childAllFoods">
+    <div *ngFor="let currentFood of childAllFoods | calories:childCalorieFilter">
       <food-display
         [food]="currentFood"
       ></food-display>
@@ -15,10 +15,10 @@ import { Food } from './food.model';
 
 export class FoodListComponent {
   @Input() childAllFoods: Food[];
+  @Input() childCalorieFilter: string;
   @Output() clickSender = new EventEmitter();
 
   editFood(_selectedFood: Food) {
-    var foodToEdit: Food = _selectedFood;
-    this.clickSender.emit(foodToEdit);
+    this.clickSender.emit(_selectedFood);
   }
 }

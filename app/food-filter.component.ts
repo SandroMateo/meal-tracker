@@ -26,5 +26,9 @@ import { Food } from './food.model';
 })
 
 export class FoodFilterComponent {
+  @Output() clickSender = new EventEmitter();
 
+  calorieChange(_calorieFilter: string) {
+    this.clickSender.emit(_calorieFilter);
+  }
 }
