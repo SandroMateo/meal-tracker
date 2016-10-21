@@ -1,6 +1,6 @@
 # Meal Tracker
 
-#### Epicodus Javascript exercise to practice Angular 2
+#### Epicodus exercise to practice Typescript and Angular 2
 
 #### By Sandro Alvarez
 
@@ -12,7 +12,7 @@ This is a webpage that allows a user to track meals they eat every day.
 
 Input Behavior | Input | Output |
 ---------------|-------|--------|
-creates food object and displays on webpage| Food: "Pizza", Details: "Vegetarian", Calories: 450 | Average Calories Per Day: 450, Date: 10/21/2016, Food: Pizza, Details: Vegetarian, Calorie: 450|
+creates food object and displays on webpage| Food: "Pizza", Details: "Vegetarian", Calories: 450 | Average Calories Per Day: 450, Date: 10/21/2016, Total Calories: 450, Food: Pizza, Details: Vegetarian, Calorie: 450|
 
 ## Setup
 

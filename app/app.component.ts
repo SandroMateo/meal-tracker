@@ -14,7 +14,9 @@ import { Food } from './food.model';
       [show]="showNewFoodForm"
       (clickSender)="addNewFood($event)"
     ></new-food>
-    <h2>Average Calories Per Day: {{ averageCaloriesPerDay }}</h2>
+    <div *ngIf="averageCaloriesPerDay > 0">
+      <h2>Average Calories Per Day: {{ averageCaloriesPerDay }}</h2>
+    </div>
     <food-list
       [childAllDates]="allDates"
       [childTotalCaloriesByDay]="totalCaloriesByDay"
