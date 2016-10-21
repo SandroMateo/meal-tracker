@@ -6,7 +6,7 @@ import { Food } from './food.model';
   template: `
   <h1>Meal Tracker</h1>
   <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
-  <button class="btn" (click)="getTotalCaloriesByDay()">See Total Calories by Day</button>
+  <button class="btn" (click)="getTotalCaloriesByDay(); calculateAverageCaloriesPerDay()">See Total Calories by Day</button>
   <food-filter
     (clickSender) = "setCalorieFilter($event)"
   ></food-filter>
@@ -34,9 +34,9 @@ export class AppComponent {
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
 
-  allDates: string[] = ["10/21/2016"];
-  totalCaloriesByDay: string [] = [];
-  averageCaloriesPerDay: string[] = [];
+  allDates: string[] = [];
+  totalCaloriesByDay: number [] = [];
+  averageCaloriesPerDay: number = 0;
 
   showNewFoodForm: boolean = false;
   selectedFood: Food = null;
@@ -79,7 +79,7 @@ export class AppComponent {
   }
 
   getTotalCaloriesByDay() {
-    var _totalCaloriesByDay: string[] = [];
+    var _totalCaloriesByDay: number[] = [];
     var totalCalories: number = 0;
     for(var i = 0; i < this.allDates.length; i++) {
       for(var j = 0; j < this.allFoods.length; j++) {
@@ -87,10 +87,17 @@ export class AppComponent {
           totalCalories += this.allFoods[j].calories;
         }
       }
-      _totalCaloriesByDay.push(this.allDates[i] + ": " + totalCalories);
+      _totalCaloriesByDay.push(totalCalories);
       totalCalories = 0;
     }
     this.totalCaloriesByDay = _totalCaloriesByDay;
-    console.log(this.totalCaloriesByDay);
+  }
+
+  calculateAverageCaloriesPerDay() {
+    var _totalCalories: number = 0;
+    for(var i = 0; i < this.totalCaloriesByDay.length; i++) {
+      _totalCalories += this.totalCaloriesByDay[i];
+    }
+    this.averageCaloriesPerDay = _totalCalories / this.totalCaloriesByDay.length;
   }
 }
