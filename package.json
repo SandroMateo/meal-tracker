@@ -1,5 +1,5 @@
 {
-  "name": "angular2-skeleton",
+  "name": "meal-tracker",
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -43,6 +43,17 @@
     "concurrently": "^2.2.0",
     "lite-server": "^2.2.2",
     "typescript": "^1.8.10",
-    "typings":"^1.3.2"
-  }
+    "typings": "^1.3.2"
+  },
+  "description": "meal track app for Epicodus",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandroMateo/meal-tracker"
+  },
+  "author": "Sandro Alvarez",
+  "bugs": {
+    "url": "https://github.com/SandroMateo/meal-tracker"
+  },
+  "homepage": "https://github.com/SandroMateo/meal-tracker"
 }

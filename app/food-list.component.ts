@@ -18,6 +18,7 @@ export class FoodListComponent {
   @Output() clickSender = new EventEmitter();
 
   editFood(_selectedFood: Food) {
-    this.clickSender.emit(_selectedFood);
+    var foodToEdit: Food = _selectedFood;
+    this.clickSender.emit(foodToEdit);
   }
 }

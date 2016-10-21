@@ -4,19 +4,19 @@ import { Food } from './food.model';
 @Component ({
   selector: 'edit-food',
   template: `
-  <div *ngIf="show">
-    <h2>New Food</h2>
+  <div *ngIf="childSelectedFood">
+    <h2>Edit Food</h2>
     <div class="form-group">
       <label for="name">Food: </label>
-      <input [(ngModel)]="food.name" class="form-control" type="text">
+      <input [(ngModel)]="childSelectedFood.name" class="form-control" type="text">
     </div>
     <div class="form-group">
       <label for="details">Details: </label>
-      <input [(ngModel)]="food.details" class="form-control" type="text">
+      <input [(ngModel)]="childSelectedFood.details" class="form-control" type="text">
     </div>
     <div class="form-group">
       <label for="calories">Calories: </label>
-      <input [(ngModel)]="food.calories" class="form-control" type="text">
+      <input [(ngModel)]="childSelectedFood.calories" class="form-control" type="text">
     </div>
     <button class="btn" (click)="finishEdit()">Finish</button>
   </div>
@@ -24,5 +24,11 @@ import { Food } from './food.model';
 })
 
 export class EditFoodComponent {
+  @Input() childSelectedFood: Food;
+  @Output() clickSender = new EventEmitter();
+
+  finishEdit() {
+    this.clickSender.emit();
+  }
 
 }

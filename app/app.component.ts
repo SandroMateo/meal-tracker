@@ -15,6 +15,8 @@ import { Food } from './food.model';
     (clickSender)="editSelectedFood($event)"
   ></food-list>
   <edit-food
+    [childSelectedFood]="selectedFood"
+    (clickSender)="finishEditing()"
   ></edit-food>
   `
 })
@@ -41,5 +43,9 @@ export class AppComponent {
 
   editSelectedFood(_selectedFood: Food) {
     this.selectedFood = _selectedFood;
+  }
+
+  finishEditing() {
+    this.selectedFood = null;
   }
 }

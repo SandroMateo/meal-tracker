@@ -1,14 +1,17 @@
 {
-  "name": "angular2-skeleton",
-  "description": "",
+  "name": "meal-tracker",
+  "description": "meal tracker app for Epicodus",
   "main": "",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/helloapro/angular-template",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
+  ],
+  "authors": [
+    "Sandro Alvarez"
   ]
 }

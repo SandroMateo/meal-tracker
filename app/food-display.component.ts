@@ -4,9 +4,9 @@ import { Food } from './food.model';
 @Component ({
   selector: 'food-display',
   template: `
-    <h2> {{ food.name }} </h2>
-    <p> {{ food.details }} </p>
-    <p> {{ food.calories }} </p>
+    <h2>Food: {{ food.name }} </h2>
+    <p>Details: {{ food.details }} </p>
+    <p>Calories: {{ food.calories }} </p>
   `
 })
 
