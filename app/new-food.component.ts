@@ -31,7 +31,12 @@ export class NewFoodComponent {
   @Output() clickSender = new EventEmitter();
 
   addFood(_name, _details, _calories) {
-    var newFoodToAdd: Food = new Food(_name, _details, _calories);
-    this.clickSender.emit(newFoodToAdd);
+    if(_name == "" || _details == "" || _calories == "") {
+      alert("Please fill out all entries in the form!");
+    } else {
+      var numCalories: number = parseInt(_calories);
+      var newFoodToAdd: Food = new Food(_name, _details, numCalories);
+      this.clickSender.emit(newFoodToAdd);
+    }
   }
 }

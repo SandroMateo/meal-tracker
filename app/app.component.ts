@@ -35,7 +35,7 @@ export class AppComponent {
   ];
 
   allDates: string[] = ["10/21/2016"];
-  totalCaloriesPerDay: string[] = [];
+  totalCaloriesByDay: string [] = [];
   averageCaloriesPerDay: string[] = [];
 
   showNewFoodForm: boolean = false;
@@ -49,6 +49,21 @@ export class AppComponent {
   addNewFood(_newFood: Food) {
     this.allFoods.push(_newFood);
     this.showNewFoodForm = false;
+    if(this.checkNewDate(_newFood.dateLogged)) {
+      this.allDates.push(_newFood.dateLogged);
+    }
+    console.log(this.allDates);
+  }
+
+  checkNewDate(_newDate: Food) {
+    var addDate: boolean = false;
+    for(var i = 0; i < this.allDates.length; i++) {
+      if(_newDate == this.allDates[i]) {
+        return addDate;
+      }
+    }
+    addDate = true;
+    return addDate;
   }
 
   editSelectedFood(_selectedFood: Food) {
@@ -64,6 +79,7 @@ export class AppComponent {
   }
 
   getTotalCaloriesByDay() {
+    var _totalCaloriesByDay: string[] = [];
     var totalCalories: number = 0;
     for(var i = 0; i < this.allDates.length; i++) {
       for(var j = 0; j < this.allFoods.length; j++) {
@@ -71,9 +87,10 @@ export class AppComponent {
           totalCalories += this.allFoods[j].calories;
         }
       }
-      this.totalCaloriesPerDay.push(this.allDates[i] + ": " + totalCalories);
+      _totalCaloriesByDay.push(this.allDates[i] + ": " + totalCalories);
       totalCalories = 0;
     }
-    console.log(this.totalCaloriesPerDay);
+    this.totalCaloriesByDay = _totalCaloriesByDay;
+    console.log(this.totalCaloriesByDay);
   }
 }
