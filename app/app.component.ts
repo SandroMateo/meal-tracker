@@ -8,6 +8,7 @@ import { Food } from './food.model';
     <h1>Meal Tracker</h1>
     <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
     <food-filter
+      [childAverageCaloriesPerDay] = "averageCaloriesPerDay"
       (clickSender) = "setCalorieFilter($event)"
     ></food-filter>
     <new-food
@@ -33,14 +34,9 @@ import { Food } from './food.model';
 })
 
 export class AppComponent {
-  allFoods: Food[] = [
-    new Food("Salad", "The same big salad I eat every day for lunch", 350),
-    new Food("Trail Mix", "handful of almonds, walnuts, and raisins", 250),
-    new Food("Burrito", "chicken burrito with guacamole, sour cream, beans, rice, spinach, salsa, and cheese", 600),
-    new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
-  ];
+  allFoods: Food[] = [];
 
-  allDates: string[] = ["10/21/2016"];
+  allDates: string[] = [];
   totalCaloriesByDay: number [] = [];
   averageCaloriesPerDay: number = 0;
 
