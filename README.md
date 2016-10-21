@@ -18,13 +18,15 @@ creates food object and displays on webpage| Food: "Pizza", Details: "Vegetarian
 
 * Clone this repository
 
-* Create a .env file in the top level of this directory.
-
 * Access your terminal and switch into this directory.
 
-* Enter 'npm-install' into the terminal, then enter 'bower-install', then enter "gulp build".
+* Enter 'npm-install'
 
-* Type 'build serve' into the terminal and push enter.
+* Enter 'bower-install'
+
+* Enter "gulp build"
+
+* Enter "build serve"
 
 ## Technologies Used
 
