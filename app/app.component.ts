@@ -14,6 +14,8 @@ import { Food } from './food.model';
     [childAllFoods]="allFoods"
     (clickSender)="editSelectedFood($event)"
   ></food-list>
+  <edit-food
+  ></edit-food>
   `
 })
 
