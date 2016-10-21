@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { NewFoodComponent }  from './new-food.component';
 import { FoodListComponent } from './food-list.component';
+import { FoodDisplayComponent } from './food-display.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FoodListComponent } from './food-list.component';
     AppComponent,
     NewFoodComponent,
     FoodListComponent,
+    FoodDisplayComponent,
   ],
   bootstrap:    [ AppComponent ]
 })
