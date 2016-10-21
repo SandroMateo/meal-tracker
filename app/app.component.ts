@@ -10,6 +10,8 @@ import { Food } from './food.model';
     [show]="showNewFoodForm"
     (clickSender)="addNewFood($event)"
   ></new-food>
+  <food-list
+  ></food-list>
   `
 })
 

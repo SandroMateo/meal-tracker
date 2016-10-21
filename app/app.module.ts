@@ -3,6 +3,7 @@ import { FormsModule }    from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { NewFoodComponent }  from './new-food.component';
+import { FoodListComponent } from './food-list.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { NewFoodComponent }  from './new-food.component';
   declarations: [
     AppComponent,
     NewFoodComponent,
+    FoodListComponent,
   ],
   bootstrap:    [ AppComponent ]
 })
