@@ -7,6 +7,7 @@ import { Food } from './food.model';
     <h2>Food: {{ food.name }} </h2>
     <p>Details: {{ food.details }} </p>
     <p>Calories: {{ food.calories }} </p>
+    <p> Date Logged: {{ food.dateLogged }} <p>
   `
 })
 

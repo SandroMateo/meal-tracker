@@ -33,6 +33,8 @@ export class AppComponent {
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
 
+  all
+
   showNewFoodForm: boolean = false;
   selectedFood: Food = null;
   calorieFilter: string = "all";
