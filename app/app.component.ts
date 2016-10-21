@@ -5,7 +5,10 @@ import { Food } from './food.model';
   selector: 'my-app',
   template: `
   <h1>Meal Tracker</h1>
+  <button class="btn" (click)="accessNewFoodForm()">Add Food</button>
   <new-food
+    [show]="showNewFoodForm"
+    (clickSender)="addNewFood($event)"
   ></new-food>
   `
 })
@@ -17,4 +20,15 @@ export class AppComponent {
     new Food("Burrito", "chicken burrito with guacamole, sour cream, beans, rice, spinach, salsa, and cheese", 600),
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
+
+  showNewFoodForm: boolean = false;
+
+  accessNewFoodForm() {
+    this.showNewFoodForm = true;
+  }
+
+  addNewFood(_newFood: Food) {
+    this.allFoods.push(_newFood);
+    this.showNewFoodForm = false;
+  }
 }

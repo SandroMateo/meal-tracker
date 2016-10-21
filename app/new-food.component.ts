@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Food } from './food.model';
 
 @Component ({
@@ -21,11 +21,17 @@ import { Food } from './food.model';
       <button class="btn" (click)="addFood(name.value, details.value, calories.value);
       name.value = '';
       details.value = '';
-      calories.value = '';">Add Food</button> 
+      calories.value = '';">Add</button>
     </div>
   `
 })
 
-export class NewFoodModule {
+export class NewFoodComponent {
+  @Input() show: boolean;
+  @Output() clickSender = new EventEmitter();
 
+  addFood(_name, _details, _calories) {
+    var newFoodToAdd: Food = new Food(_name, _details, _calories);
+    this.clickSender.emit(newFoodToAdd);
+  }
 }
