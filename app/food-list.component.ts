@@ -17,8 +17,8 @@ import { Food } from './food.model';
         <food-display
           [date]="currentDate"
           [food]="currentFood"
+          (clickSender)="editFood($event)"
         ></food-display>
-        <button class="btn" (click)="editFood(currentFood)">Edit</button>
         <hr>
       </div>
     </div>

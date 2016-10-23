@@ -5,23 +5,16 @@ import { Food } from './food.model';
   selector: 'food-filter',
   template: `
     <div *ngIf="childAverageCaloriesPerDay > 0">
-      <h4>Filters</h4>
       <div class="form-group" (change)="calorieChange($event.target.value)">
-        <div class="radio">
-          <label><input type=radio name="calories" value="all" checked>
-            All
-          </label>
-        </div>
-        <div class="radio">
-          <label><input type=radio name="calories" value="low">
-            Low Calorie Food
-          </label>
-        </div>
-        <div class="radio">
-          <label><input type=radio name="calories" value="high">
-            High Calorie Food
-          </label>
-        </div>
+        <label>Filters :<span> </span><input type=radio name="calories" value="all" checked>
+          All
+        </label>
+        <label> | <input type=radio name="calories" value="low">
+          Low Calorie Food
+        </label>
+        <label> | <input type=radio name="calories" value="high">
+          High Calorie Food
+        </label>
       </div>
     </div>
   `

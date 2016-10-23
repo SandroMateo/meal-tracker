@@ -4,13 +4,23 @@ import { Food } from './food.model';
 @Component({
   selector: 'my-app',
   template: `
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-left">
+        <food-filter
+          [childAverageCaloriesPerDay] = "averageCaloriesPerDay"
+          (clickSender) = "setCalorieFilter($event)"
+        ></food-filter>
+      </div>
+      <div class="navbar-right">
+        <button class="btn" id="new-meal-btn" (click)="accessNewFoodForm()">Add Food</button>
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <h1>Meal Tracker</h1>
-    <button class="btn" id="new-meal-btn" (click)="accessNewFoodForm()">Eat Up!</button>
-    <food-filter
-      [childAverageCaloriesPerDay] = "averageCaloriesPerDay"
-      (clickSender) = "setCalorieFilter($event)"
-    ></food-filter>
+    <div class="jumbotron">
+      <h1>Meal Tracker</h1>
+    </div>
     <div *ngIf="averageCaloriesPerDay > 0">
       <h2>Average Calories Per Day: {{ averageCaloriesPerDay }}</h2>
     </div>
@@ -47,8 +57,8 @@ export class AppComponent {
     new Food("Chocolate Hazelnut Scone", "really sugary, but delicious", 100)
   ];
 
-  allDates: string[] = ["10/21/2016"];
-  totalCaloriesByDay: number [] = [];
+  allDates: string[] = ["10/22/2016"];
+  totalCaloriesByDay: number [] = [1300];
   averageCaloriesPerDay: number = 1300;
 
   showNewFoodForm: boolean = false;
@@ -57,12 +67,12 @@ export class AppComponent {
 
   accessNewFoodForm() {
     this.showNewFoodForm = true;
+    this.selectedFood = null;
   }
 
   addNewFood(_newFood: Food) {
     this.allFoods.push(_newFood);
     this.showNewFoodForm = false;
-    this.selectedFood = null;
     if(this.checkNewDate(_newFood.dateLogged)) {
       this.allDates.push(_newFood.dateLogged);
     }
